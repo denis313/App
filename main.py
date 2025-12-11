@@ -11,7 +11,7 @@ from aiogram.enums.parse_mode import ParseMode
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(os.getenv("TOKEN"))
+bot = Bot('7246301763:AAFD_8vaxy4cUm3tOJLWrAAgtZ0ZKoqabsM')
 dp = Dispatcher()
 
 
