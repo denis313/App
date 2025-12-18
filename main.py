@@ -4,20 +4,21 @@ import json
 
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.enums import ParseMode, ContentType
+from aiogram.filters import CommandStart
 from aiogram.types import WebAppInfo, KeyboardButton, ReplyKeyboardMarkup
 
 
 bot = Bot('7246301763:AAFD_8vaxy4cUm3tOJLWrAAgtZ0ZKoqabsM')
 dp = Dispatcher()
 
-@dp.message()
+@dp.message(CommandStart)
 async def show_miniapp(message: types.Message):
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(
                 text="Открыть MiniApp",
                 ##### Заменить ниже:
-                web_app=WebAppInfo(url="https://ССЫЛКА-КОТОРУЮ-ВЫ-ПОЛУЧИТЕ-ПОЗЖЕ/")
+                web_app=WebAppInfo(url="https://miniwebapps.ru")
             )]
         ],
         resize_keyboard=True
