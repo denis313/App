@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mini App</title>
+   <title>Mini App</title>
   <style>
     :root {
       --bg-color: var(--tg-theme-bg-color, #ffffff);
@@ -63,11 +58,39 @@
       padding: 12px 24px;
       font-size: 16px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       background: var(--accent-color);
-      color: var(--tg-theme-button-text-color, #ffffff);
+      color: var(--button-text-color);
       cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    form {
       margin-top: 20px;
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--input-bg);
+      color: var(--text-color);
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 100px;
     }
   </style>
 
@@ -82,41 +105,34 @@
     <h1>Привет из Mini App 👋</h1>
     <p>MiniApp успешно открыт в Telegram!</p>
     <button id="actionBtn" class="btn">Продолжить</button>
-
-    <form id="dataForm">
-      <input required="" id="nameInput" placeholder="Ваше имя" type="text">
-      <textarea required="" id="msgInput" placeholder="Ваше сообщение"></textarea>
-      <button class="btn" type="submit">Отправить</button>
+   <form id="dataForm">
+       <input required="" id="nameInput" placeholder="Ваше имя" type="text">
+       <textarea required="" id="msgInput" placeholder="Ваше сообщение"></textarea>
+       <button class="btn" type="submit">Отправить</button>
     </form>
-    </div>
-</head>>
+  </div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+   const form = document.getElementById("dataForm");
+    const actionBtn = document.getElementById("actionBtn");
 
-    <script>
-        const form = document.getElementById("dataForm");
-        const actionBtn = document.getElementById("actionBtn");
+    actionBtn.addEventListener("click", () =&gt; {
+      form.style.display = "flex";
+      actionBtn.style.display = "none";
+    });
 
-        actionBtn.addEventListener("click", () =&gt; {
-          form.style.display = "flex";
-          actionBtn.style.display = "none";
-        });
+    form.addEventListener("submit", (e) =&gt; {
+      e.preventDefault();
 
-        form.addEventListener("submit", (e) =&gt; {
-          e.preventDefault();
+      const name = document.getElementById("nameInput").value.trim();
+      const msg = document.getElementById("msgInput").value.trim();
 
-          const name = document.getElementById("nameInput").value.trim();
-          const msg = document.getElementById("msgInput").value.trim();
+      if (!name || !msg) return;
 
-          if (!name || !msg) return;
+      const payload = {
+        name,
+        message: msg
+      };
 
-          const payload = {
-            name,
-            message: msg
-          };
+      tg.sendData(JSON.stringify(payload));
+    });
 
-          tg.sendData(JSON.stringify(payload));
-        });
-    </script>
-
-</html>
