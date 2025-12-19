@@ -1,1 +1,86 @@
-<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    :root {
+      --bg-color: var(--tg-theme-bg-color, #ffffff);
+      --text-color: var(--tg-theme-text-color, #000000);
+      --accent-color: var(--tg-theme-button-color, #0088cc);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-align: center;
+    }
+
+    .warn {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 40px 20px;
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .warn img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .warn p {
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .main {
+      display: none;
+      padding: 20px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background: var(--accent-color);
+      color: var(--tg-theme-button-text-color, #ffffff);
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+    <div id="notInTelegram" class="warn">
+    <img alt="TLogo" src="https://telegram.org/img/t_logo.png">
+    <p><strong>Упс!</strong></p>
+    <p>Это приложение должно быть запущено <strong>внутри Telegram!</strong></p>
+  </div>
+
+  <div id="mainApp" class="main">
+    <h1>Привет из Mini App 👋</h1>
+    <p>MiniApp успешно открыт в Telegram!</p>
+    <button id="actionBtn" class="btn">Продолжить</button>
+  </div>
+</body>
+</html>
