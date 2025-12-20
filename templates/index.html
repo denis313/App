@@ -92,7 +92,7 @@
       const notInTelegram = document.getElementById("notInTelegram");
       const mainApp = document.getElementById("mainApp");
 
-      if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+      if (tg.initDataUnsafe && tg.initDataUnsafe.user > 0) {
         notInTelegram.style.display = "none";
         mainApp.style.display = "block";
       } else {
