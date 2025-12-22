@@ -10,6 +10,9 @@
       --accent-color: var(--tg-theme-button-color, #0088cc);
     }
 
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     * {
       margin: 0;
       padding: 0;
@@ -21,6 +24,7 @@
       color: var(--text-color);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       text-align: center;
+      font-siz: 18px;
     }
 
     .warn {
@@ -88,6 +92,7 @@
       const tg = window.Telegram.WebApp;
 
       tg.ready();
+      tg.expand();
 
       const notInTelegram = document.getElementById("notInTelegram");
       const mainApp = document.getElementById("mainApp");
