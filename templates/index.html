@@ -215,14 +215,26 @@
     <div onclick="nav('profile')">👤<br>Профиль</div>
   </div>
 
-  <!-- JS -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand();
+  </div>
 
-    function send(action) {
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      const tg = window.Telegram.WebApp;
+
+      tg.ready();
+      tg.expand();
+
+      const notInTelegram = document.getElementById("notInTelegram");
+      const mainApp = document.getElementById("mainApp");
+
+      if (tg.platform !== "unknown") {
+        notInTelegram.style.display = "none";
+        mainApp.style.display = "block";
+      } else {
+        notInTelegram.style.display = "flex";
+        mainApp.style.display = "none";
+      }
+      function send(action) {
       const payload = {
         action,
         time: Date.now()
@@ -246,26 +258,6 @@
     function nav(where) {
       send("nav_" + where);
     }
-  </script>
-  </div>
-
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-      const tg = window.Telegram.WebApp;
-
-      tg.ready();
-      tg.expand();
-
-      const notInTelegram = document.getElementById("notInTelegram");
-      const mainApp = document.getElementById("mainApp");
-
-      if (tg.platform !== "unknown") {
-        notInTelegram.style.display = "none";
-        mainApp.style.display = "block";
-      } else {
-        notInTelegram.style.display = "flex";
-        mainApp.style.display = "none";
-      }
 
     </script>
 </body>
