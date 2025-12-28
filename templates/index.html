@@ -23,6 +23,11 @@
       width: 100%;
       height: 100%;
     }
+     * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background: var(--bg-color);
@@ -49,12 +54,119 @@
       margin-bottom: 12px;
     }
 
-    .btn {
+    .Btn {
       padding: 12px 24px;
       font-size: 16px;
       border: none;
       border-radius: 6px;
       background: var(--accent-color);
+      color: #fff;
+      cursor: pointer;
+    }
+        .top {
+      background: #fff;
+      color: #000;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top input {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+      background: #f0f0f0;
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .forward {
+      position: absolute;
+      top: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .side {
+      position: absolute;
+      top: 40%;
+      font-size: 14px;
+      padding: 6px 10px;
+      background: #2f7d32;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .left { left: 10px; }
+    .right { right: 10px; }
+
+    .circle {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: #2e5ae8;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .inner {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #f39c12;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .inner span {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 14px;
+      background: #fff;
+    }
+    .btn {
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .green { background: #2e7d32; }
+    .red { background: #d9534f; }
+
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      background: #1a1a1a;
+      padding: 10px 0;
+      font-size: 12px;
+    }
+
+    .nav div {
+      text-align: center;
       color: #fff;
       cursor: pointer;
     }
@@ -68,9 +180,73 @@
   </div>
 
   <div id="mainApp" class="main">
-    <h1>Привет из Mini App 👋</h1>
-    <p>MiniApp успешно открыт в Telegram!</p>
-    <button id="actionBtn" class="btn">Продолжить</button>
+    <div class="top">
+    ☰
+    <input placeholder="Search" />
+    ⚙️
+  </div>
+
+  <!-- MAIN -->
+  <div class="content">
+    <div class="forward" id="btnForward">⬆ Вперёд</div>
+
+    <div class="side left" id="btnLeft">⬅ Налево</div>
+    <div class="side right" id="btnRight">Направо ➡</div>
+
+    <div class="circle">
+      <div class="inner" id="btnRepeat">
+        🚗
+        <span>ПОВТОРИТЬ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+    <div class="btn green" id="btnCommands">КОМАНДЫ</div>
+    <div class="btn red" id="btnErrors">ОШИБКИ</div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div onclick="nav('home')">🏠<br>Домой</div>
+    <div onclick="nav('back')">⬅<br>Назад</div>
+    <div onclick="nav('select')">☰<br>Выбор</div>
+    <div onclick="nav('profile')">👤<br>Профиль</div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    function send(action) {
+      const payload = {
+        action,
+        time: Date.now()
+      };
+
+      console.log("SEND:", payload);
+
+      if (tg.sendData) {
+        tg.sendData(JSON.stringify(payload));
+      }
+    }
+
+    document.getElementById("btnForward").onclick = () => send("forward");
+    document.getElementById("btnLeft").onclick = () => send("left");
+    document.getElementById("btnRight").onclick = () => send("right");
+    document.getElementById("btnRepeat").onclick = () => send("repeat");
+
+    document.getElementById("btnCommands").onclick = () => send("commands");
+    document.getElementById("btnErrors").onclick = () => send("errors");
+
+    function nav(where) {
+      send("nav_" + where);
+    }
+  </script>
   </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
