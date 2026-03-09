@@ -492,7 +492,7 @@
       const mainApp = document.getElementById("mainApp");
 
       // Проверка по наличию данных инициализации
-      if (tg.initData.length > 0) {
+      if (tg.initDataUnsafe.length > 0) {
           notInTelegram.style.display = "none";
           mainApp.style.display = "flex";
       } else {
