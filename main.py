@@ -12,16 +12,7 @@ dp = Dispatcher()
 
 @dp.message(CommandStart)
 async def show_miniapp(message: types.Message):
-    keyboard = InlineKeyboardMarkup(
-        keyboard=[
-            [InlineKeyboardButton(
-                text="Открыть MiniApp",
-                ##### Заменить ниже:
-                web_app=WebAppInfo(url="https://miniwebapps.ru")
-            )]
-        ],
-        resize_keyboard=True
-    )
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Открыть MiniApp", web_app=WebAppInfo(url="https://miniwebapps.ru"))]])
     await message.answer("Нажмите кнопку ниже, чтобы открыть Mini App:", reply_markup=keyboard)
 
 
