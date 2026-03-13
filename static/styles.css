@@ -8,6 +8,20 @@
   --shadow: rgba(0, 0, 0, 0.08);
 }
 
+/* Button click animation for all interactive elements */
+.pressable {
+  transition: transform 0.12s ease, opacity 0.12s ease, filter 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.pressable:active {
+  opacity: 0.88;
+  filter: brightness(0.92);
+}
+/* Scale-down for elements without their own transform */
+.pressable-scale:active {
+  transform: scale(0.97);
+}
+
 .commands-modal {
   position: fixed;
   inset: 0;

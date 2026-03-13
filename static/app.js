@@ -114,7 +114,7 @@
     for (const cmd of items) {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "commands-item";
+      btn.className = "commands-item pressable pressable-scale";
       btn.textContent = cmd.name;
       btn.addEventListener("click", () => playCommand(cmd));
       modalList.appendChild(btn);
