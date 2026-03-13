@@ -219,24 +219,26 @@
 
     .sector {
       position: absolute;
-      width: 50%;
-      height: 50%;
+      width: 60%;
+      height: 32%;
       top: 50%;
       left: 50%;
-      transform-origin: 0% 0%;
+      transform-origin: 0% 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      color: #ffffff;
-      cursor: pointer;
+      color: #000;
+      background: #ffffff;
       border: 2px solid #000;
+      border-radius: 999px;
       box-sizing: border-box;
+      cursor: pointer;
     }
 
     .sector span {
-      transform: translate(-40%, -40%);
+      transform: none;
     }
 
     .sector-1 { transform: rotate(288deg); }
