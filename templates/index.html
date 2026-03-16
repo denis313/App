@@ -229,31 +229,36 @@
 
     .sector {
       position: absolute;
-      width: 50%;
-      height: 50%;
+      width: 50%;   /* Занимает половину ширины родителя */
+      height: 50%;  /* Занимает половину высоты родителя */
       top: 50%;
       left: 50%;
-      transform-origin: 0% 0%;
-      clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 97.5% 34.5%);
+      transform-origin: 0% 0%; /* Вращаем относительно центра круга */
+
+      /* Рисуем треугольник:
+         (0 0) - центр круга
+         (100% 0) - верхний правый угол
+         (30.9% 95.1%) - точка, дающая угол ровно 72 градуса */
+      clip-path: polygon(0 0, 100% 0, 30.9% 95.1%);
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffffff;
-      cursor: pointer;
-      background: transparent;
     }
 
-    .sector span {
-      transform: translate(-40%, -40%);
+    sector span {
+      transform: translate(25px, -35px) rotate(45deg);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: white;
     }
 
-    .sector-1 { transform: rotate(288deg); }
-    .sector-2 { transform: rotate(0deg); }
-    .sector-3 { transform: rotate(72deg); }
-    .sector-4 { transform: rotate(144deg); }
-    .sector-5 { transform: rotate(216deg); }
+    /* Расставляем сектора по кругу (шаг 72 градуса) */
+    .sector-1 { transform: rotate(-72deg); background: #f44336; }
+    .sector-2 { transform: rotate(0deg);   background: #2196f3; }
+    .sector-3 { transform: rotate(72deg);  background: #4caf50; }
+    .sector-4 { transform: rotate(144deg); background: #ff9800; }
+    .sector-5 { transform: rotate(216deg); background: #9c27b0; }
 
     .inner {
       width: 120px;
