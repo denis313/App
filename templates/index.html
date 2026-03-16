@@ -208,37 +208,45 @@
       width: 260px;
       height: 260px;
       border-radius: 50%;
-      background: #2e5ae8;
+      background: conic-gradient(
+        from 0deg,
+        #2e5ae8 0deg 71deg,
+        #000 71deg 73deg,
+        #2e5ae8 73deg 143deg,
+        #000 143deg 145deg,
+        #2e5ae8 145deg 215deg,
+        #000 215deg 217deg,
+        #2e5ae8 217deg 287deg,
+        #000 287deg 289deg,
+        #2e5ae8 289deg 360deg
+      );
       display: grid;
       place-items: center;
       position: relative;
-      overflow: hidden;
       margin-top: 8px;
       margin-bottom: 14px;
     }
 
     .sector {
       position: absolute;
-      width: 60%;
-      height: 32%;
+      width: 50%;
+      height: 50%;
       top: 50%;
       left: 50%;
-      transform-origin: 0% 50%;
+      transform-origin: 0% 0%;
+      clip-path: polygon(0 0, 100% 0, 30.9% 95.1%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      color: #000;
-      background: #ffffff;
-      border: 2px solid #000;
-      border-radius: 999px;
-      box-sizing: border-box;
+      color: #ffffff;
       cursor: pointer;
+      background: transparent;
     }
 
     .sector span {
-      transform: none;
+      transform: translate(-40%, -40%);
     }
 
     .sector-1 { transform: rotate(288deg); }
